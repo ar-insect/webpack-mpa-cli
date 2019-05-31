@@ -1,4 +1,4 @@
-# 一个基于webpack4 + babel6 + ejs 的多页开发环境
+# 一个基于webpack4 + babel7 + ejs 的多页开发环境
 
 ## 安装
 
