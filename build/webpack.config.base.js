@@ -1,6 +1,7 @@
 'use strict'
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const utils = require('./utils')
 
@@ -67,7 +68,11 @@ module.exports = {
     },
 
     plugins: [
-        ...utils.transTemplate()
+        ...utils.transTemplate(),
+        new CopyWebpackPlugin([{ 
+            from: utils.resolve('src/shared/assets'), 
+            to: utils.resolve('dist/assets')
+        }]),
     ],
     // multi pages entries
     entry: utils.getEntries('./src/**/*.js'),

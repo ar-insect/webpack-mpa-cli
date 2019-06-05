@@ -7,7 +7,7 @@ const WebpackMd5Hash = require('webpack-md5-hash')
 const CleanPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const utils = require('./utils')
 
@@ -69,10 +69,10 @@ module.exports = merge(baseConfig, {
 
     plugins: [
       new CleanPlugin([utils.resolve('dist')]),
-      new CopyWebpackPlugin([{ 
-        from: utils.resolve('src/shared/assets'), 
-        to: utils.resolve('dist/assets')
-      }]),
+    //   new CopyWebpackPlugin([{ 
+    //     from: utils.resolve('src/shared/assets'), 
+    //     to: utils.resolve('dist/assets')
+    //   }]),
       new ExtractTextPlugin({
           filename: '[name].[chunkhash].css'
       }),
