@@ -186,7 +186,7 @@ function restart() {
     })
     .on('mousedown', (d) => {
       if (d3.event.ctrlKey) return;
-
+      
       // select node
       mousedownNode = d;
       selectedNode = (mousedownNode === selectedNode) ? null : mousedownNode;

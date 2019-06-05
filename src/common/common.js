@@ -5,6 +5,10 @@ import 'bootstrap/scss/bootstrap.scss';
 import '../shared/styles/styles.scss';
 // import 'bootstrap';
 
+if (!window.d3) {
+    window.d3 = d3;
+}
+
 export {
     $,
     d3
