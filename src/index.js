@@ -1,5 +1,5 @@
 
-import { $, d3, Neo4jd3 } from '../common/common';
+import { $, d3, Neo4jd3 } from './common/common';
 import './hr.scss';
 // import data from '../shared/assets/json/neo4jData.json';
 var data = {
