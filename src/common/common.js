@@ -1,15 +1,16 @@
 import $ from 'jquery';
-import * as d3 from 'd3';
-// import Swiper from 'swiper/dist/js/swiper.js';
 import 'bootstrap/scss/bootstrap.scss';
+import 'font-awesome/css/font-awesome.css';
+import '../shared/assets/neo4jd3/styles/neo4jd3.scss';
 import '../shared/styles/styles.scss';
 // import 'bootstrap';
+import * as d3 from 'd3';
+import Neo4jd3 from '../shared/assets/neo4jd3/dist/js/neo4jd3.min';
 
 if (!window.d3) {
     window.d3 = d3;
 }
 
 export {
-    $,
-    d3
+    $, d3, Neo4jd3
 };
