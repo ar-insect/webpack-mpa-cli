@@ -32,5 +32,5 @@ __MACOSX/
 .DS_Store
 Thumbs.db
 
-dist/
+/dist/
 package-lock.json
