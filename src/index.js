@@ -1,6 +1,5 @@
-
 import { $, d3, Neo4jd3 } from './common/common';
-import './hr.scss';
+import './index.scss';
 // import data from '../shared/assets/json/neo4jData.json';
 var data = {
     "results": [{
@@ -391,24 +390,24 @@ var neo4jd3 = new Neo4jd3('#neo4jd3', {
         'zoomOut': 'search-minus'
     },
     images: {
-        'Address': 'img/twemoji/1f3e0.svg',
-        'BirthDate': 'img/twemoji/1f5d3.svg',
-        'Cookie': 'img/twemoji/1f36a.svg',
-        'CreditCard': 'img/twemoji/1f4b3.svg',
-        'Device': 'img/twemoji/1f4bb.svg',
-        'Email': 'img/twemoji/2709.svg',
-        'Git': 'img/twemoji/1f5c3.svg',
-        'Github': 'img/twemoji/1f5c4.svg',
-        'icons': 'img/twemoji/1f38f.svg',
-        'Ip': 'img/twemoji/1f4cd.svg',
-        'Issues': 'img/twemoji/1f4a9.svg',
-        'Language': 'img/twemoji/1f1f1-1f1f7.svg',
-        'Options': 'img/twemoji/2699.svg',
-        'Password': 'img/twemoji/1f511.svg',
-        'Project|name|d3': 'img/twemoji/32-20e3.svg',
-        'Project|name|neo4j': 'img/twemoji/33-20e3.svg',
-        'Project|name|neo4jd3': 'img/twemoji/31-20e3.svg',
-        'User': 'img/twemoji/1f600.svg'
+        // 'Address': 'img/twemoji/1f3e0.svg',
+        // 'BirthDate': 'img/twemoji/1f5d3.svg',
+        // 'Cookie': 'img/twemoji/1f36a.svg',
+        // 'CreditCard': 'img/twemoji/1f4b3.svg',
+        // 'Device': 'img/twemoji/1f4bb.svg',
+        // 'Email': 'img/twemoji/2709.svg',
+        // 'Git': 'img/twemoji/1f5c3.svg',
+        // 'Github': 'img/twemoji/1f5c4.svg',
+        // 'icons': 'img/twemoji/1f38f.svg',
+        // 'Ip': 'img/twemoji/1f4cd.svg',
+        // 'Issues': 'img/twemoji/1f4a9.svg',
+        // 'Language': 'img/twemoji/1f1f1-1f1f7.svg',
+        // 'Options': 'img/twemoji/2699.svg',
+        // 'Password': 'img/twemoji/1f511.svg',
+        // 'Project|name|d3': 'img/twemoji/32-20e3.svg',
+        // 'Project|name|neo4j': 'img/twemoji/33-20e3.svg',
+        // 'Project|name|neo4jd3': 'img/twemoji/31-20e3.svg',
+        // 'User': 'img/twemoji/1f600.svg'
     },
     minCollision: 60,
     neo4jData: data,
@@ -425,36 +424,27 @@ var neo4jd3 = new Neo4jd3('#neo4jd3', {
             default:
                 var maxNodes = 1,
                     data = neo4jd3.randomD3Data(node, maxNodes);
-                neo4jd3.updateWithD3Data({
-                    "nodes":[
-                        {
-                            "id":26,
-                            "labels":[
-                                "mail-forward,share"
-                            ],
-                            "properties":{
-                                "random":"mail-forward,share"
-                            },
-                            "x":824.868687748586,
-                            "y":694.6265030301855
-                        }
-                    ]
-                });
-                // console.log(d3.select(''))
+                // neo4jd3.updateWithD3Data({
+                //     "nodes":[
+                //         {
+                //             "id":26,
+                //             "labels":[
+                //                 "mail-forward,share"
+                //             ],
+                //             "properties":{
+                //                 "random":"mail-forward,share"
+                //             },
+                //             "x":824.868687748586,
+                //             "y":694.6265030301855
+                //         }
+                //     ]
+                // });
 
                 break;
         }
     },
     zoomFit: false
 });
-
-function getSelectedNode(node) {
-    if (node.selected) {
-      return [node]
-    } else {
-      return []
-    }
-}
 
 function selectItem(item) {
     if (selectedItem) {
@@ -480,11 +470,12 @@ function nodeClicked(d) {
     } else {
         deselectItem()
     }
-
-    const g = svg.selectAll('g.node').filter(item => item.selected)
-    console.log(g)
+    
+    const g = svg.selectAll('g.node').filter(item => {
+        console.log(item);
+        return item.selected
+    });
     const tab = g
-        .enter()
         .append('path')
         .classed('context-menu-item', true)
 }
