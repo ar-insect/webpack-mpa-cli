@@ -1,7 +1,5 @@
-
 import { $, d3, Neo4jd3 } from './common/common';
-import './hr.scss';
-// import data from '../shared/assets/json/neo4jData.json';
+import './index.scss';
 var data = {
     "results": [{
         "columns": ["user", "entity"],
@@ -217,6 +215,5 @@ var selectedItem = null;
 
 var nodes = data.results[0].data[0].graph.nodes;
 nodes = nodes.map(res => res.selected = false);
-
 
 

@@ -22,6 +22,7 @@
     "ejs-html-loader": "^4.0.1",
     "ejs-loader": "^0.3.1",
     "ejs-render-loader": "^1.0.0",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "swiper": "^4.5.0"
   },
