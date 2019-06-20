@@ -6,7 +6,7 @@ import '../shared/styles/styles.scss'
 import 'EasyUI/themes/bootstrap/easyui.css'
 import 'EasyUI/themes/icon.css'
 import 'EasyUI/jquery.easyui.min'
-// import 'bootstrap';
+import 'bootstrap';
 import * as d3 from 'd3'
 import Neo4jd3 from '../shared/assets/neo4jd3/index'
 
