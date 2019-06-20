@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Easyui Demo</title>
+  </head>
+
+  <body>
+
+    <input id="dt" type="text" name="birthday">
+
+    <div id="win" class="easyui-window" title="My Window" style="width:600px;height:400px"
+        data-options="iconCls:'icon-save',modal:true">
+        Window Content
+    </div>
+
+    <input id="ss"></input>
+    <div id="mm" style="width:120px">
+        <div data-options="name:'all',iconCls:'icon-ok'">All News</div>
+        <div data-options="name:'sports'">Sports News</div>
+    </div>
+
+    <ul id="tt" class="easyui-tree">
+            <li>
+                <span>Folder</span>
+                <ul>
+                    <li>
+                        <span>Sub Folder 1</span>
+                        <ul>
+                            <li><span><a href="#">File 11</a></span></li>
+                            <li><span>File 12</span></li>
+                            <li><span>File 13</span></li>
+                        </ul>
+                    </li>
+                    <li><span>File 2</span></li>
+                    <li><span>File 3</span></li>
+                </ul>
+            </li>
+            <li><span>File21</span></li>
+    </ul>
+
+    <div class="easyui-resizable" style="width:100px;height:100px;border:1px solid #ccc;"
+    data-options="maxWidth:800,maxHeight:600">
+</div>
+  </body>
+</html>

@@ -196,9 +196,15 @@ function Neo4jD3(_selector, _options) {
         appendRingToNode(n);
         appendOutlineToNode(n);
 
+<<<<<<< HEAD
         // if (options.icons) {
             appendTextToNode(n);
         // }
+=======
+        if (options.icons) {
+            appendTextToNode(n);
+        }
+>>>>>>> 293e83289b9b73f879504a7b161fe12c1b95270e
 
         if (options.images) {
             appendImageToNode(n);

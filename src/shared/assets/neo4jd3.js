@@ -878,6 +878,7 @@
         }
     
         function updateWithD3Data(d3Data) {
+            debugger
             updateNodesAndRelationships(d3Data.nodes, d3Data.relationships);
         }
     
