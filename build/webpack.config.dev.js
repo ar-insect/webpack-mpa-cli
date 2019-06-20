@@ -7,7 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
 
 const HOST = 'localhost'
-const PORT = 8888
+const PORT = 9900
 
 module.exports = merge(baseConfig, {
     mode: 'development',

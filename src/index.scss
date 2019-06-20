@@ -1,6 +1,46 @@
+.neo4jd3 {
+  height: 80%;
+  overflow: hidden;
+}
 
-  .neo4jd3 {
-    height: 100%;
+.menu-icon {
+  path {
+      transform: scale(.03);
   }
+}
 
-  
+path {
+  &.context-menu-item {
+      cursor: pointer;
+      stroke-width: 2px;
+      fill: #d2d5da;
+      &:hover {
+          fill: #b9b9b9;
+          font-size: 14px;
+      }
+  }
+}
+
+path.link {
+  fill: none;
+  stroke: #000;
+  stroke-width: 4px;
+  cursor: default;
+}
+
+svg:not(.active):not(.ctrl) path.link {
+  cursor: pointer;
+}
+
+path.link.selected {
+  stroke-dasharray: 10,2;
+}
+
+path.link.dragline {
+  pointer-events: none;
+}
+
+path.link.hidden {
+  stroke-width: 0;
+}
+

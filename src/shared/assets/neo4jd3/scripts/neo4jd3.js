@@ -31,21 +31,21 @@ function Neo4jD3(_selector, _options) {
                        .attr('width', '100%')
                        .attr('height', '100%')
                        .attr('class', 'neo4jd3-graph')
-                       .call(d3.zoom().on('zoom', function() {
-                           var scale = d3.event.transform.k,
-                               translate = [d3.event.transform.x, d3.event.transform.y];
+                    //    .call(d3.zoom().on('zoom', function() {
+                    //        var scale = d3.event.transform.k,
+                    //            translate = [d3.event.transform.x, d3.event.transform.y];
 
-                           if (svgTranslate) {
-                               translate[0] += svgTranslate[0];
-                               translate[1] += svgTranslate[1];
-                           }
+                    //        if (svgTranslate) {
+                    //            translate[0] += svgTranslate[0];
+                    //            translate[1] += svgTranslate[1];
+                    //        }
 
-                           if (svgScale) {
-                               scale *= svgScale;
-                           }
+                    //        if (svgScale) {
+                    //            scale *= svgScale;
+                    //        }
 
-                           svg.attr('transform', 'translate(' + translate[0] + ', ' + translate[1] + ') scale(' + scale + ')');
-                       }))
+                    //        svg.attr('transform', 'translate(' + translate[0] + ', ' + translate[1] + ') scale(' + scale + ')');
+                    //    }))
                        .on('dblclick.zoom', null)
                        .append('g')
                        .attr('width', '100%')
@@ -175,6 +175,15 @@ function Neo4jD3(_selector, _options) {
                            options.onNodeMouseLeave(d);
                        }
                    })
+                   .on('mouseup', function(d) {
+                        if (info) {
+                            clearInfo(d);
+                        }
+
+                        if (typeof options.onNodeMouseUp === 'function') {
+                            options.onNodeMouseUp(d);
+                        }
+                   })
                    .call(d3.drag()
                            .on('start', dragStarted)
                            .on('drag', dragged)
@@ -187,9 +196,9 @@ function Neo4jD3(_selector, _options) {
         appendRingToNode(n);
         appendOutlineToNode(n);
 
-        if (options.icons) {
+        // if (options.icons) {
             appendTextToNode(n);
-        }
+        // }
 
         if (options.images) {
             appendImageToNode(n);
@@ -229,7 +238,7 @@ function Neo4jD3(_selector, _options) {
                    })
                    .attr('fill', '#ffffff')
                    .attr('font-size', function(d) {
-                       return icon(d) ? (options.nodeRadius + 'px') : '10px';
+                       return icon(d) ? (options.nodeRadius + 'px') : '14px';
                    })
                    .attr('pointer-events', 'none')
                    .attr('text-anchor', 'middle')
@@ -238,7 +247,7 @@ function Neo4jD3(_selector, _options) {
                    })
                    .html(function(d) {
                        var _icon = icon(d);
-                       return _icon ? '&#x' + _icon : d.id;
+                       return _icon ? '&#x' + _icon : d.labels[0];
                    });
     }
 
@@ -495,7 +504,7 @@ function Neo4jD3(_selector, _options) {
         simulation = initSimulation();
 
         if (options.neo4jData) {
-            loadNeo4jData(options.neo4jData);
+            loadNeo4jData();
         } else if (options.neo4jDataUrl) {
             loadNeo4jDataFromUrl(options.neo4jDataUrl);
         } else {
@@ -556,11 +565,11 @@ function Neo4jD3(_selector, _options) {
         return simulation;
     }
 
-    function loadNeo4jData() {
+    function loadNeo4jData(data) {
         nodes = [];
         relationships = [];
 
-        updateWithNeo4jData(options.neo4jData);
+        updateWithNeo4jData(data || options.neo4jData);
     }
 
     function loadNeo4jDataFromUrl(neo4jDataUrl) {
@@ -906,12 +915,12 @@ function Neo4jD3(_selector, _options) {
     function updateNodesAndRelationships(n, r) {
         updateRelationships(r);
         updateNodes(n);
-
         simulation.nodes(nodes);
         simulation.force('link').links(relationships);
     }
 
     function updateRelationships(r) {
+        
         Array.prototype.push.apply(relationships, r);
 
         relationship = svgRelationships.selectAll('.relationship')
@@ -959,6 +968,7 @@ function Neo4jD3(_selector, _options) {
     init(_selector, _options);
 
     return {
+        loadNeo4jData: loadNeo4jData,
         appendRandomDataToNode: appendRandomDataToNode,
         neo4jDataToD3Data: neo4jDataToD3Data,
         randomD3Data: randomD3Data,

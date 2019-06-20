@@ -126,7 +126,6 @@ function tick() {
 // update graph (called when needed)
 function restart() {
   // path (link) group
-  debugger
   path = path.data(links);
 
   // update existing links
@@ -258,9 +257,8 @@ function restart() {
 function mousedown() {
   // because :active only works in WebKit?
   svg.classed('active', true);
-
+  
   if (d3.event.ctrlKey || mousedownNode || mousedownLink) return;
-
   // insert new node at point
   const point = d3.mouse(this);
   const node = { id: ++lastNodeId, reflexive: false, x: point[0], y: point[1] };
@@ -271,7 +269,7 @@ function mousedown() {
 
 function mousemove() {
   if (!mousedownNode) return;
-
+  
   // update drag line
   dragLine.attr('d', `M${mousedownNode.x},${mousedownNode.y}L${d3.mouse(this)[0]},${d3.mouse(this)[1]}`);
 }
